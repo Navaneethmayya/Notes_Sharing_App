@@ -1,18 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Button from "./Components/Button/Buttons"; //label,varient,onClick,disabled
+import { ToastContainer,toast } from 'react-toastify';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  
+  const type="";
 
   return (
     <>
-      <div className='bg-amber-50'>
+      <div className="bg-amber-50">
         <p>Hello</p>
-        </div>
+      </div>
+      <Button label="Iam God" variant="danger" onClick={()=>toast("god is Great!!!!!!!!!!!")} />
+      <Button type="submit" label="iam vinayaka"/>
+    
+      <p></p>
+       <ToastContainer position="top-right" autoClose={2000} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
