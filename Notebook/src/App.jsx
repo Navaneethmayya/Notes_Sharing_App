@@ -22,7 +22,7 @@ function App() {
        <Registerform/>
         
       
-        <p>Hii testing </p>
+       
     </>
   );
 }
