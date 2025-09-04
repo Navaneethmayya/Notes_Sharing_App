@@ -1,20 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Button from "./Components/Button/Buttons"; //label,varient,onClick,disabled
+import { ToastContainer,toast } from 'react-toastify';
+import LoginForm from "./Components/auth/LoginForm";
+import Registerform from "./Components/auth/Registerform";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  
+  const type="";
 
   return (
     <>
-      <div className='bg-amber-50'>
+      <div className="bg-amber-50">
         <p>Hello</p>
-        </div>
+      </div>
+      <Button label="Iam God" variant="danger" onClick={()=>toast("god is Great!!!!!!!!!!!")} />
+      <Button type="submit" label="iam vinayaka"/>
+       <ToastContainer position="top-right" autoClose={2000} />
+       <Registerform/>
+        
       
         <p>Hii testing </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
