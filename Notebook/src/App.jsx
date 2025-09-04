@@ -11,7 +11,7 @@ function App() {
       <div className='bg-amber-50'>
         <p>Hello</p>
         </div>
-        nmnv
+        {/* //Testing */}
     </>
   )
 }
