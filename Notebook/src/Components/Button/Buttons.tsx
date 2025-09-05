@@ -29,3 +29,16 @@ function Button({ label,type, onClick, variant = "primary", disabled = false }) 
 }
 
 export default Button;
+
+////////////////////////////// Read me ///////////////////////////////
+
+/* example usages
+<Button label="Submit" variant="primary" onClick={() => alert("Submitted!")} />
+
+  <Button label="Iam God" variant="danger" onClick={()=>toast("god is Great!!!!!!!!!!!")} />
+  
+  <Button type="submit" label="iam vinayaka"/>
+       
+*/
+
+////////////////////////////// Read me ///////////////////////////////
