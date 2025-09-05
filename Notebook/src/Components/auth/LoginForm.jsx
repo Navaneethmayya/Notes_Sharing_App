@@ -25,7 +25,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen ">
+    <div className="flex items-center justify-center w-[350px] absolute top-[50%] left-[50%] transform -translate-1/2 z-100">
       {/* Toaster must be at the root of your component tree */}
       <Toaster position="top-center" reverseOrder={false} />
 
@@ -91,7 +91,7 @@ export default function LoginForm() {
 
         <p className=" text-center text-sm text-gray-600">
           Don’t have an account?{" "}
-          <a href="#" className="text-blue-600 hover:underline">
+          <a href="/" className="text-blue-600 hover:underline">
             Sign Up
           </a>
         </p>
