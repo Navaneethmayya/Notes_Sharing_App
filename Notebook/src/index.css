@@ -1,2 +1,9 @@
 @import "tailwindcss";
 @import 'bootstrap/dist/css/bootstrap.min.css';
+
+.epunda-slab-uniquifier{
+  font-family: "Epunda Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}

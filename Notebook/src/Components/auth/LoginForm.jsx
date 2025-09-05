@@ -18,14 +18,14 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen ">
       {/* Toaster must be at the root of your component tree */}
       <Toaster position="top-center" reverseOrder={false} />
 
       <div className="w-full max-w-sm p-6 bg-white rounded-2xl shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign In</h2>
+        <h2 className="!text-3xl font-extrabold  text-center mt-4 ">Sign In</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 p-4">
           {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -41,7 +41,7 @@ export default function LoginForm() {
           </div>
 
           {/* Password */}
-          <div>
+          <div className="py-3">
             <label className="block text-sm font-medium text-gray-700">
               Password
             </label>
@@ -54,7 +54,7 @@ export default function LoginForm() {
             />
 
             {/* Show/Hide Password Checkbox */}
-            <div className="mt-2 flex items-center space-x-2">
+            <div className="mt-2 flex items-center space-x-2 py-2 ">
               <input
                 type="checkbox"
                 id="showPassword"
@@ -62,7 +62,7 @@ export default function LoginForm() {
                 onChange={() => setShowPassword(!showPassword)}
                 className="h-4 w-4 text-blue-600 border-gray-300 rounded"
               />
-              <label htmlFor="showPassword" className="text-sm text-gray-700 ">
+              <label htmlFor="showPassword" className="text-sm text-gray-700 !pl-2  ">
                 Show Password
               </label>
             </div>
@@ -72,12 +72,12 @@ export default function LoginForm() {
 
 
           {/* Submit Button */}
-          <div className="flex items-center justify-center mt-4">
+          <div className="flex items-center justify-center ">
             <Button type="submit" label={"Sign in"} variant="primary" />
           </div>
         </form>
 
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className=" text-center text-sm text-gray-600">
           Don’t have an account?{" "}
           <a href="#" className="text-blue-600 hover:underline">
             Sign Up

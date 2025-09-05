@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-// import Button from "./Components/Button/Buttons"; //label,varient,onClick,disabled
+import Button from "./Components/Button/Buttons"; //label,varient,onClick,disabled
 import { ToastContainer,toast } from 'react-toastify';
 
 import Registerform from "./Components/auth/Registerform";

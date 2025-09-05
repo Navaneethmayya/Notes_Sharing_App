@@ -1,13 +1,12 @@
-import React from 'react'
-import LoginForm from '../Components/auth/LoginForm'
+import React from "react";
+import LoginForm from "../Components/auth/LoginForm";
 
 function LoginPage() {
   return (
-    <div className=" bg-blue-950">
-            <LoginForm /> 
-</div>
-
-)
+    <div className="	bg-[#eae0cc]">
+      <LoginForm />
+    </div>
+  );
 }
 
-export default LoginPage
+export default LoginPage;
