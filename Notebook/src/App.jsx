@@ -2,9 +2,9 @@ import { useState } from "react";
 import "./App.css";
 // import Button from "./Components/Button/Buttons"; //label,varient,onClick,disabled
 import { ToastContainer,toast } from 'react-toastify';
-import LoginForm from "./Components/auth/LoginForm";
+
 import Registerform from "./Components/auth/Registerform";
-import RegisterPage from "./Pages/RegisterPage";
+
 import LoginPage from "./Pages/LoginPage";
 import { Route, Routes } from "react-router-dom";
 
