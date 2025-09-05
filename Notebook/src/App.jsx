@@ -4,7 +4,9 @@ import Button from "./Components/Button/Buttons"; //label,varient,onClick,disabl
 import { ToastContainer,toast } from 'react-toastify';
 import LoginForm from "./Components/auth/LoginForm";
 import Registerform from "./Components/auth/Registerform";
-
+import RegisterPage from "./Pages/RegisterPage";
+import LoginPage from "./Pages/LoginPage";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,15 +15,20 @@ function App() {
 
   return (
     <>
-      <div className="bg-amber-50">
+      {/* <div className="bg-amber-50">
         <p>Hello</p>
       </div>
-      <Button label="Iam God" variant="danger" onClick={()=>toast("god is Great!!!!!!!!!!!")} />
-      <Button type="submit" label="iam vinayaka"/>
-       <ToastContainer position="top-right" autoClose={2000} />
+    
        <Registerform/>
 
-        <LoginForm />
+        <LoginForm /> */}
+       
+        <ToastContainer position="top-right" autoClose={2000} />
+        <Routes>
+        <Route path="/" element={<Registerform/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
+        </Routes>
+        
 
     </>
   );
