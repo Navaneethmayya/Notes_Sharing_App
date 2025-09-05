@@ -20,9 +20,9 @@ function App() {
       <Button type="submit" label="iam vinayaka"/>
        <ToastContainer position="top-right" autoClose={2000} />
        <Registerform/>
-       
-      
-       
+
+        <LoginForm />
+
     </>
   );
 }
