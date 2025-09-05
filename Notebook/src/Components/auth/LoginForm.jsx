@@ -5,15 +5,22 @@ import Button from "../Button/Buttons";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [disable, setdisable] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // new state
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent page refresh
-
+    setdisable(true);
     if (!email || !password) {
       toast.error("Please fill in both fields!");
+      setTimeout(() => {
+        setdisable(false);
+      }, 3000);
     } else {
       toast.success(`Submitted!\nEmail: ${email}\nPassword: ${password}`);
+      setTimeout(() => {
+        setdisable(false);
+      }, 3000);
     }
   };
 
@@ -62,18 +69,23 @@ export default function LoginForm() {
                 onChange={() => setShowPassword(!showPassword)}
                 className="h-4 w-4 text-blue-600 border-gray-300 rounded"
               />
-              <label htmlFor="showPassword" className="text-sm text-gray-700 !pl-2  ">
+              <label
+                htmlFor="showPassword"
+                className="text-sm text-gray-700 !pl-2  "
+              >
                 Show Password
               </label>
             </div>
           </div>
 
-
-
-
           {/* Submit Button */}
           <div className="flex items-center justify-center ">
-            <Button type="submit" label={"Sign in"} variant="primary" />
+            <Button
+              type="submit"
+              label={"Sign in"}
+              variant="primary"
+              disabled={disable}
+            />
           </div>
         </form>
 
