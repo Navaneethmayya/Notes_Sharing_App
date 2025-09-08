@@ -64,7 +64,13 @@ notes-sharing-app/
 │       ├── pages/
 │       │   ├── LoginPage.jsx
 │       │   ├── RegisterPage.jsx
-│       │   ├── DashboardPage.jsx
+│       │   ├── AuthorPages.
+│       │       ├──DashBoard_Page
+│       │       ├──Create_notes_page
+│       │       ├──Edit_notes_page
+│       │       ├──Add_NotesPage
+│       │       ├──Review_Request_Page
+│       │       
 |       |   |── VisitorPage.jsx
 │       │   ├── NoteEditorPage.jsx
 │       │   ├── SharedNotesPage.jsx   (optional advanced)
