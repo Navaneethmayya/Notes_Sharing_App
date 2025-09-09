@@ -29,9 +29,12 @@ function App() {
         <Route path="/" element={<Registerform/>}/>
         <Route path="/login" element={<LoginPage/>}/>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <Route path="/search" element={<SearchBar/>}/>
     </Routes>
 =======
+=======
+>>>>>>> Stashed changes
         <Route path="/authorDashboard" element={<AuthorDasboard/>}/>
         </Routes>
 >>>>>>> Stashed changes
