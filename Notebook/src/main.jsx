@@ -6,11 +6,11 @@ import InputField from "./Components/InputFeild/Inputfield.jsx";
 import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  
     <BrowserRouter>
       <div className="epunda-slab-uniquifier">
         <App />
       </div>
     </BrowserRouter>
-  </StrictMode>
+
 );

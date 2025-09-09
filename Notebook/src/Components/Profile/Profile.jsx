@@ -1,19 +1,28 @@
 import React from "react";
+import { useState, useRef } from "react";
 import "./Profile.css";
 import { Spinner } from "reactstrap";
-import { toast } from "react-toastify";
-import { start } from "node:repl";
+import ImageCropper from "./ImageCropper";
 function Profile() {
-  const [spinner, setSpinner] = React.useState(false);
- const startPress = () => {
+  const [spinner, setSpinner] = useState(false);
+  const [profileImg, setProfileImg] = useState(null);
+  const timerRef = React.useRef(null);
+  const cancelledRef = useRef(true);
+
+  const startPress = () => {
+    cancelledRef.current = false;
+    console.log("start press called");
     timerRef.current = setTimeout(() => {
-      onLongPress(); // call the function when held
-    }, 2000);
-    
+      if (!cancelledRef.current) setSpinner(true);
+    }, 1000);
   };
 
   const endPress = () => {
+    cancelledRef.current = true;
     clearTimeout(timerRef.current);
+    console.log("end press called");
+    setSpinner(false);
+    // Removed direct DOM manipulation; handle spinner appearance with state and CSS.
   };
   return (
     <>
@@ -23,14 +32,44 @@ function Profile() {
           alt="profile"
           className="profile_img"
           onMouseDown={startPress}
-          onMouseUp={endPress}
-          onMouseLeave={endPress}
-          onTouchStart={startPress}
-          onTouchEnd={endPress}
-          onmouseup={()=>setSpinner(false)}
+          onDoubleClick={endPress}
         />
         {spinner && (
-          <Spinner id="spinner" color="primary" type="grow"></Spinner>
+          <div>
+            <Spinner id="spinner" color="primary" type="grow"></Spinner>
+            <ImageCropper
+              trigger={
+                <div
+                  style={{
+                    width: 120,
+                    height: 120,
+                    borderRadius: "50%",
+                    border: "2px solid #ccc",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {profileImg ? (
+                    <img
+                      src={profileImg}
+                      alt="profile"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : (
+                    <span style={{ color: "#888" }}>+</span>
+                  )}
+                </div>
+              }
+              onSave={setProfileImg}
+            />
+          </div>
         )}
       </div>
     </>
