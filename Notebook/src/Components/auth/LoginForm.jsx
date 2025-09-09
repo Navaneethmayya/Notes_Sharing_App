@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "../Button/Buttons";
 
+
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,6 +10,7 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false); // new state
 
   const handleSubmit = (e) => {
+    
     e.preventDefault(); // prevent page refresh
     setdisable(true);
     if (!email || !password) {
@@ -21,6 +23,8 @@ export default function LoginForm() {
       setTimeout(() => {
         setdisable(false);
       }, 3000);
+
+
     }
   };
 
@@ -36,13 +40,13 @@ export default function LoginForm() {
           {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Email
+           Email / username
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              placeholder="Enter your email or username"
               className="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -85,6 +89,7 @@ export default function LoginForm() {
               label={"Sign in"}
               variant="primary"
               disabled={disable}
+          
             />
           </div>
         </form>
