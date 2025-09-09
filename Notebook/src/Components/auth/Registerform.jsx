@@ -1,31 +1,40 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import axios from 'axios';
+
 
 const Registerform = () => {
-  const [username, setUsername] = useState("");
+  const [name, setname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState("");
   const [bio, setBio] = useState("");
 
   const handleSubmit = async () => {
-    toast.info(username + " " + email + " " + password + " " + type);
+    // toast.info(name + " " + email + " " + password + " " + type);
 
     /////////////////////////////////////////////////////////
     /* here i made a request to register place the endpoint in "URL" and test*/
 
     ////////////////////////////////////////////////////////
-    // try{
-    //   await axios.post("URL",{
-    //     username,email,password,type,bio
-    //   });
+    try{
 
-    // }catch(error){
-    //   toast.warning("unable to register")
-    // }
+      const res=await axios.post("http://localhost:5184/api/Users/register",{
+        Name: name,
+        Email:email,
+        Password:password,
+        Type : type,
+        Bio : bio,
+      });
+      toast.success("Registered Successfully");
+      console.log("res is",res.data);
+      toast.info("your unique Username is"+res.data.username);
+      
+    }catch(error){
+      toast.warning("unable to register    "+error);
+    }
 
-    toast.success("Registered Successfully");
   };
 
   return (
@@ -38,8 +47,8 @@ const Registerform = () => {
             name="username"
             placeholder="write your username"
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={name}
+            onChange={(e) => setname(e.target.value)}
           />
         </FormGroup>
 
@@ -84,7 +93,7 @@ const Registerform = () => {
 
         <FormGroup>
           <Label for="exampleText">Tell About Yourself</Label>
-          <Input id="exampleText" name="text" type="textarea" />
+          <Input id="exampleText" name="text" type="textarea" onChange={(e)=>setBio(e.target.value)} />
         </FormGroup>
 
         <Button onClick={handleSubmit}>Submit</Button>
