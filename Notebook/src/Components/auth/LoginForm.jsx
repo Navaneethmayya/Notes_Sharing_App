@@ -42,7 +42,7 @@ export default function LoginForm() {
           {/* username */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Username
+              Email / Username
             </label>
             <input
               type="text"
