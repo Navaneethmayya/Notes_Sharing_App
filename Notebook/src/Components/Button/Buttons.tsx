@@ -1,7 +1,7 @@
 import React from "react";
 import { ToastContainer, toast } from 'react-toastify';
  
-function Button({ label,type, onClick, variant = "primary", disabled = false }) {
+function Button({ label,type, onClick, variant = "primary", disabled = false,children, }) {
   // Base button style
   const baseStyle = "px-4 py-2 rounded text-white font-medium transition";
 
@@ -13,17 +13,19 @@ function Button({ label,type, onClick, variant = "primary", disabled = false }) 
   };
 
   return (
-    <button
+    <button 
       onClick={onClick}
       disabled={disabled}
-      type={type}
+      type={type}    
+      
       className={`
         ${baseStyle} 
         ${styles[variant]} 
-        ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+        ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
       `}
     >
-      {label}
+     {/* if children exist (like an icon), render them. Otherwise use label */}
+      {children || label}
     </button>
   );
 }
