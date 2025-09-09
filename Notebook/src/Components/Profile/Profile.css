@@ -1,0 +1,10 @@
+.profile_holder{
+    height: 150px;
+    width:150px;
+    border: 1px solid black
+}
+.profile img{
+    width: 200px;
+    height: 200px;
+
+}

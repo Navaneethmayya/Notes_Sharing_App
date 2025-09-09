@@ -7,6 +7,7 @@ import Registerform from "./Components/auth/Registerform";
 
 import LoginPage from "./Pages/LoginPage";
 import { Route, Routes } from "react-router-dom";
+import AuthorDasboard from "./Pages/AuthorDasboard";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -27,8 +28,13 @@ function App() {
         <Routes>
         <Route path="/" element={<Registerform/>}/>
         <Route path="/login" element={<LoginPage/>}/>
+<<<<<<< Updated upstream
         <Route path="/search" element={<SearchBar/>}/>
     </Routes>
+=======
+        <Route path="/authorDashboard" element={<AuthorDasboard/>}/>
+        </Routes>
+>>>>>>> Stashed changes
         
 
     </>
