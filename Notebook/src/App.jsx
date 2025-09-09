@@ -29,6 +29,7 @@ function App() {
         <Route path="/" element={<Registerform/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/authordashboard" element={<AuthorDasboard/>}/>
+        <Route path="/search" element={<SearchBar/>}/>
         </Routes>
 
     </>
