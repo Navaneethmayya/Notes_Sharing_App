@@ -4,7 +4,7 @@ import Button from "../Button/Buttons";
 
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
+  const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
   const [disable, setdisable] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // new state
@@ -13,13 +13,13 @@ export default function LoginForm() {
     
     e.preventDefault(); // prevent page refresh
     setdisable(true);
-    if (!email || !password) {
+    if (!username || !password) {
       toast.error("Please fill in both fields!");
       setTimeout(() => {
         setdisable(false);
       }, 3000);
     } else {
-      toast.success(`Submitted!\nEmail: ${email}\nPassword: ${password}`);
+      toast.success(`Submitted!\n username: ${username}\nPassword: ${password}`);
       setTimeout(() => {
         setdisable(false);
       }, 3000);
@@ -27,6 +27,8 @@ export default function LoginForm() {
 
     }
   };
+
+  
 
   return (
     <div className="flex items-center justify-center w-[350px] absolute top-[50%] left-[50%] transform -translate-1/2 z-100">
@@ -37,16 +39,16 @@ export default function LoginForm() {
         <h2 className="!text-3xl font-extrabold  text-center mt-4 ">Sign In</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4 p-4">
-          {/* Email */}
+          {/* username */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-           Email / username
+              Username
             </label>
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email or username"
+              type="text"
+              value={username}
+              onChange={(e) => setusername(e.target.value)}
+              placeholder="Enter your Username"
               className="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
