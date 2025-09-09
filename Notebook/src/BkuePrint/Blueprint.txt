@@ -1,0 +1,89 @@
+notes-sharing-app/
+│
+├── backend/                 # Spring Boot Backend
+│   ├── pom.xml              # Maven dependencies
+│   └── src/
+│       └── main/
+│           ├── java/com/notesapp/
+│           │   ├── controller/
+│           │   │   ├── AuthController.java
+│           │   │   └── NotesController.java
+│           │   │
+│           │   ├── model/
+│           │   │   ├── User.java
+│           │   │   └── Note.java
+│           │   │
+│           │   ├── repository/
+│           │   │   ├── UserRepository.java
+│           │   │   └── NoteRepository.java
+│           │   │
+│           │   ├── service/
+│           │   │   ├── UserService.java
+│           │   │   └── NoteService.java
+│           │   │
+│           │   ├── security/
+│           │   │   ├── JwtUtil.java
+│           │   │   ├── JwtFilter.java
+│           │   │   ├── SecurityConfig.java
+│           │   │   └── CustomUserDetailsService.java
+│           │   │
+│           │   └── NotesSharingAppApplication.java
+│           │
+│           └── resources/
+│               ├── application.properties
+│               └── data.sql (optional: seed users/notes)
+│
+│
+├── frontend/                # React Frontend
+│   ├── package.json
+│   ├── vite.config.js / webpack.config.js (depending on setup)
+│   └── src/
+│       ├── index.jsx
+│       ├── App.jsx
+│       │
+│       ├── components/
+│       │   ├── common/
+│       │   │   ├── Button.jsx
+│       │   │   ├── InputField.jsx
+│       │   │   ├── Loader.jsx
+│       │   │   ├── Modal.jsx
+│       │   │   └── ProtectedRoute.jsx
+│       │   │
+│       │   ├── auth/
+│       │   │   ├── LoginForm.jsx
+│       │   │   └── RegisterForm.jsx
+│       │   │
+│       │   ├── notes/
+│       │   │   ├── NoteCard.jsx
+│       │   │   ├── NoteList.jsx
+│       │   │   ├── NoteForm.jsx
+│       │   │   └── SearchBar.jsx
+│       │   │
+│       │   └── Navbar.jsx
+│       │
+│       ├── pages/
+│       │   ├── LoginPage.jsx
+│       │   ├── RegisterPage.jsx
+│       │   ├── AuthorPages.
+│       │       ├──DashBoard_Page
+│       │       ├──Create_notes_page
+│       │       ├──Edit_notes_page
+│       │       ├──Add_NotesPage
+│       │       ├──Review_Request_Page
+
+│       │       
+|       |   |── VisitorPage.jsx
+│       │   ├── NoteEditorPage.jsx
+│       │   ├── SharedNotesPage.jsx   (optional advanced)
+│       │   └── NotFoundPage.jsx
+│       │
+│       ├── context/
+│       │   ├── AuthContext.jsx
+│       │   └── NotesContext.jsx      (optional, global notes state)
+│       │
+│       └── services/
+│           ├── api.js
+│           ├── authService.js
+│           └── notesService.js
+│
+└── README.md
