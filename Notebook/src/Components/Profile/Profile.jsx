@@ -1,78 +1,47 @@
-import React from "react";
-import { useState, useRef } from "react";
-import "./Profile.css";
+import React, { useState, useRef } from "react";
 import { Spinner } from "reactstrap";
-import ImageCropper from "./ImageCropper";
+import "./Profile.css";
 function Profile() {
   const [spinner, setSpinner] = useState(false);
-  const [profileImg, setProfileImg] = useState(null);
-  const timerRef = React.useRef(null);
-  const cancelledRef = useRef(true);
-
+  const timerRef = useRef(null);
+  const inputRef = useRef(null);
+  const visibleRef=useRef(false);
   const startPress = () => {
-    cancelledRef.current = false;
-    console.log("start press called");
-    timerRef.current = setTimeout(() => {
-      if (!cancelledRef.current) setSpinner(true);
-    }, 1000);
+    timerRef.current = setTimeout(() => setSpinner(true), 1000);
   };
 
-  const endPress = () => {
-    cancelledRef.current = true;
-    clearTimeout(timerRef.current);
-    console.log("end press called");
-    setSpinner(false);
-    // Removed direct DOM manipulation; handle spinner appearance with state and CSS.
+  const cancelPress = () => clearTimeout(timerRef.current);
+
+  const handleDoubleClick = () => setSpinner(false);
+  const handleOutsideClick = (e) => {
+    if (!e.target.closest(".profile_holder")) setSpinner(false);
   };
+
+  React.useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, []);
+
   return (
-    <>
-      <div className="profile_holder">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-          alt="profile"
-          className="profile_img"
-          onMouseDown={startPress}
-          onDoubleClick={endPress}
-        />
-        {spinner && (
-          <div>
-            <Spinner id="spinner" color="primary" type="grow"></Spinner>
-            <ImageCropper
-              trigger={
-                <div
-                  style={{
-                    width: 120,
-                    height: 120,
-                    borderRadius: "50%",
-                    border: "2px solid #ccc",
-                    overflow: "hidden",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  {profileImg ? (
-                    <img
-                      src={profileImg}
-                      alt="profile"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : (
-                    <span style={{ color: "#888" }}>+</span>
-                  )}
-                </div>
-              }
-              onSave={setProfileImg}
-            />
-          </div>
-        )}
-      </div>
-    </>
+    <div className="profile_holder">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+        alt="profile"
+        className="profile_img"
+        onMouseDown={startPress}
+        onMouseUp={cancelPress}
+        onMouseLeave={cancelPress}
+        onDoubleClick={handleDoubleClick}
+        onClick={()=>visibleRef && inputRef.current.click()}
+      />
+      {spinner && (
+        visibleRef.current = true,
+        <div>
+          <Spinner color="primary" type="grow" />
+          <input type="file" name="img" id="profile_img" ref={inputRef} />
+        </div>
+      )}
+    </div>
   );
 }
 
