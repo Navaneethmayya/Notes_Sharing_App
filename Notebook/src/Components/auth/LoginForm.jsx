@@ -106,3 +106,12 @@ export default function LoginForm() {
     </div>
   );
 }
+
+
+////////////////////// Read Me //////////////////////
+/* herewe can login using either " username or email ", backend will handle the input sent
+  meaning u can send an one of them or both of them and still it will work
+  !! without explicitly mentioning as email or username
+  rest of thefeature consits of password hidden funtion, some desgin enhancements etc.
+*/
+////////////////////// Read Me //////////////////////
