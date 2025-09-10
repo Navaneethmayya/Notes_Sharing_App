@@ -14,10 +14,6 @@ const Registerform = () => {
   const handleSubmit = async () => {
     // toast.info(name + " " + email + " " + password + " " + type);
 
-    /////////////////////////////////////////////////////////
-    /* here i made a request to register place the endpoint in "URL" and test*/
-
-    ////////////////////////////////////////////////////////
     try{
 
       const res=await axios.post("http://localhost:5184/api/Users/register",{
@@ -103,3 +99,13 @@ const Registerform = () => {
 };
 
 export default Registerform;
+
+
+////////////////////// Read Me //////////////////////
+/* this is a registration component consisting of reactstrap fomr with axios based request where we have 
+  Name,email,password,type(Author,Visitior,Admin) and bio as feilds
+  on submit it will do a async request to this endpoint "http://localhost:5184/api/Users/register"
+  and if successfull it will return a  !! unique username !!  for the user
+  otherwise it will show error toast
+*/
+////////////////////// Read Me //////////////////////
