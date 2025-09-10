@@ -4,6 +4,7 @@ import Button from "./Components/Button/Buttons"; //label,varient,onClick,disabl
 import { ToastContainer,toast } from 'react-toastify';
 import SearchBar from "./Components/Searchbar/SearchBar";
 import Registerform from "./Components/auth/Registerform";
+import LoginForm from "./Components/auth/LoginForm";
 
 import LoginPage from "./Pages/LoginPage";
 import { Route, Routes } from "react-router-dom";
@@ -27,7 +28,7 @@ function App() {
         <ToastContainer position="top-right" autoClose={2000}  />
         <Routes>
         <Route path="/" element={<Registerform/>}/>
-        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/login" element={<LoginForm/>}/>
         <Route path="/authordashboard" element={<AuthorDasboard/>}/>
         <Route path="/search" element={<SearchBar/>}/>
         </Routes>

@@ -1,36 +1,61 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "../Button/Buttons";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import LoginPage from "../../Pages/LoginPage";
 
 export default function LoginForm() {
-  const [username, setusername] = useState("");
+  const navigate = useNavigate();
+  const [usernameorEmail, setusernameorEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disable, setdisable] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // new state
 
-  const handleSubmit = (e) => {
-    
+  const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page refresh
     setdisable(true);
-    if (!username || !password) {
+
+    if (!usernameorEmail || !password) {
       toast.error("Please fill in both fields!");
       setTimeout(() => {
         setdisable(false);
       }, 3000);
     } else {
-      toast.success(`Submitted!\n username: ${username}\nPassword: ${password}`);
+
+      try {
+        const res = await axios.post(`http://localhost:5184/api/Users/login`, {
+          usernameorEmail: usernameorEmail,
+          password: password,
+        });
+
+        if (res.status == 200) {
+          toast.success("Login successfull");
+          navigate("/authorDashboard");
+        } 
+      } 
+      catch (error) {
+        
+        setusernameorEmail("");
+        setPassword("");
+
+        if(error.response.status=== 401){
+
+          toast.error("Invalid username or password");
+        }
+        else{
+          toast.error("Something went wrong, try again later....");
+        }
+      }
+
       setTimeout(() => {
         setdisable(false);
       }, 3000);
-
-
     }
   };
 
-  
-
   return (
+    <>
     <div className="flex items-center justify-center w-[350px] absolute top-[50%] left-[50%] transform -translate-1/2 z-100">
       {/* Toaster must be at the root of your component tree */}
       <Toaster position="top-center" reverseOrder={false} />
@@ -39,16 +64,16 @@ export default function LoginForm() {
         <h2 className="!text-3xl font-extrabold  text-center mt-4 ">Sign In</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4 p-4">
-          {/* username */}
+          {/* usernameorEmail */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Email / Username
             </label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setusername(e.target.value)}
-              placeholder="Enter your Username"
+              value={usernameorEmail}
+              onChange={(e) => setusernameorEmail(e.target.value)}
+              placeholder="Enter your usernameorEmail"
               className="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -91,7 +116,6 @@ export default function LoginForm() {
               label={"Sign in"}
               variant="primary"
               disabled={disable}
-          
             />
           </div>
         </form>
@@ -104,9 +128,10 @@ export default function LoginForm() {
         </p>
       </div>
     </div>
+      <LoginPage/>
+      </>
   );
 }
-
 
 ////////////////////// Read Me //////////////////////
 /* herewe can login using either " username or email ", backend will handle the input sent
