@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import axios from "axios";
 import LoginPage from "../../Pages/LoginPage";
-
+import Button from "../Button/Buttons"; 
 const Registerform = () => {
   const [name, setname] = useState("");
   const [email, setEmail] = useState("");
@@ -99,7 +99,7 @@ const Registerform = () => {
               />
             </FormGroup>
             <div className="flex justify-center">
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button variant="primary" onClick={handleSubmit}>Submit</Button>
             </div>
           </Form>
         </div>
