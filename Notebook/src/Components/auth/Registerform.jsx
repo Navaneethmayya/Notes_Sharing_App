@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import axios from "axios";
 import LoginPage from "../../Pages/LoginPage";
+import { useNavigate } from "react-router-dom";
 import Button from "../Button/Buttons"; 
 const Registerform = () => {
   const [name, setname] = useState("");
@@ -10,6 +11,7 @@ const Registerform = () => {
   const [password, setPassword] = useState("");
   const [type, setType] = useState("");
   const [bio, setBio] = useState("");
+  const navigate=useNavigate();
 
   const handleSubmit = async () => {
     // toast.info(name + " " + email + " " + password + " " + type);
@@ -23,6 +25,7 @@ const Registerform = () => {
         Bio: bio,
       });
       toast.success("Registered Successfully");
+      navigate("/login");
       console.log("res is", res.data);
       toast.info("your unique Username is" + res.data.username);
     } catch (error) {
