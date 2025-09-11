@@ -27,6 +27,7 @@ function App() {
        
         <ToastContainer position="top-right" autoClose={2000}  />
         <Routes>
+           
         <Route path="/" element={<Registerform/>}/>
         <Route path="/login" element={<LoginForm/>}/>
         <Route path="/authordashboard" element={<AuthorDasboard/>}/>

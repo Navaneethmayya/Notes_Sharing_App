@@ -32,7 +32,7 @@ const Registerform = () => {
 
   return (
     <>
-      <div className="absolute bg-white z-10 left-100 top-1 px-3 py-1 rounded-2xl">
+      <div className="absolute bg-white z-10 left-100 top-7 px-3 py-1 rounded-2xl">
         <div className="flex justify-center align-middle">
           <h3>Register Form</h3>
         </div>
