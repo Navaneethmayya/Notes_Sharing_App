@@ -4,13 +4,13 @@ import "./index.css";
 import App from "./App.jsx";
 import InputField from "./Components/InputFeild/Inputfield.jsx";
 import { BrowserRouter } from "react-router-dom";
+import Dark_light from "./Components/dark_light_switch/Dark_light.jsx";
+import ThemeProvider from "./Context/ThemeProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
-  
-    <BrowserRouter>
-      <div className="epunda-slab-uniquifier">
-        <App />
-      </div>
-    </BrowserRouter>
-
+  <BrowserRouter>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>
 );
