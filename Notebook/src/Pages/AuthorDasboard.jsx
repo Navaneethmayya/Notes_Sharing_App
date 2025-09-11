@@ -4,7 +4,7 @@ import Profile from '../Components/Profile/Profile'
 function AuthorDasboard() {
   return (
     <>
-    <Profile/>
+    <Profile />
     </>
   )
 }
