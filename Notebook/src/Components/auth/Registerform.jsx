@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import axios from "axios";
 import LoginPage from "../../Pages/LoginPage";
 import { useNavigate } from "react-router-dom";
-
+import Button from "../Button/Buttons"; 
 const Registerform = () => {
   const [name, setname] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ const Registerform = () => {
 
   return (
     <>
-      <div className="absolute bg-white z-10 left-100 top-1 px-3 py-1 rounded-2xl">
+      <div className="absolute bg-white z-10 left-100 top-7 px-3 py-1 rounded-2xl">
         <div className="flex justify-center align-middle">
           <h3>Register Form</h3>
         </div>
@@ -102,7 +102,7 @@ const Registerform = () => {
               />
             </FormGroup>
             <div className="flex justify-center">
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button variant="primary" onClick={handleSubmit}>Submit</Button>
             </div>
           </Form>
         </div>
