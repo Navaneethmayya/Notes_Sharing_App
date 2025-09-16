@@ -4,6 +4,7 @@ import Button from "../Button/Buttons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LoginPage from "../../Pages/LoginPage";
+import Dark_light from "../dark_light_switch/Dark_light";
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -129,6 +130,8 @@ export default function LoginForm() {
       </div>
     </div>
       <LoginPage/>
+      
+      
       </>
   );
 }
