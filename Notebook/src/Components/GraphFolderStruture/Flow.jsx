@@ -62,6 +62,7 @@ export default function Flow() {
         <Controls />
         <Background />
       </ReactFlow>
+      
       <Button varient="primary" onClick={addAgent} label="Add Node" />
     </>
   );
