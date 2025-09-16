@@ -9,6 +9,7 @@ import LoginForm from "./Components/auth/LoginForm";
 import LoginPage from "./Pages/LoginPage";
 import { Route, Routes } from "react-router-dom";
 import AuthorDasboard from "./Pages/AuthorDasboard";
+import FlowPage from "./Pages/FlowPage";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -31,6 +32,7 @@ function App() {
         <Route path="/login" element={<LoginForm/>}/>
         <Route path="/authordashboard" element={<AuthorDasboard/>}/>
         <Route path="/search" element={<SearchBar/>}/>
+        <Route path="/FlowPage" element={<FlowPage/>}/>
         </Routes>
 
     </>
