@@ -15,6 +15,7 @@ const Dark_light = () => {
     // console.log("Theme switched to:", theme === "light" ? "dark" : "light");
   }
   return (
+    <>
     <div className="align_to_center">
       <div className="switch">
         <input type="checkbox" className="switch__input" id="Switch" onClick={toggleBtn} />
@@ -24,6 +25,7 @@ const Dark_light = () => {
         </label>
       </div>
     </div>
+    </>
   );
 };
 
