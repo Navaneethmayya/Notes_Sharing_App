@@ -75,15 +75,11 @@ export default function Flow() {
       </ReactFlow>
       <div className="flow_inputs">
 
-      <label htmlFor="node_id">Enter Node Id</label>
-      <input type="text" name=""  value={nodeId} onChange={((e)=>setNodeId(e.target.value))} id="node_id" placeholder="enter node id" />
-      <label htmlFor="node_lable">Enter Node lable</label>
-      <input type="text" name=""  value={nodeLabel} onChange={((e)=>setNodeLabel(e.target.value))} id="node_lable" placeholder="enter node id" />
-      <label htmlFor="connection_from">Connection from</label>
-      <input type="text" name=""  value={cFrom} onChange={((e)=>setCFrom(e.target.value))} id="connection_from" placeholder="enter parent id"/>
-      <label htmlFor="connection_to">Connection to</label>
-      <input type="text" name=""  value={cTo} onChange={((e)=>setCTo(e.target.value))} id="connection_to" placeholder="enter child id"/>
-      <Button varient="primary" onClick={addAgent} label="Add Node" />
+      <label htmlFor="node_lable">Name</label>
+      <input type="text" name=""  value={nodeLabel} onChange={((e)=>{setNodeLabel(e.target.value);setNodeId(e.target.value);setCTo(e.target.value)})} id="node_lable" placeholder="Enter a topic name" />
+      <label htmlFor="connection_from">Related to</label>
+      <input type="text" name=""  value={cFrom} onChange={((e)=>setCFrom(e.target.value))} id="connection_from" placeholder="enter parent topic name"/>
+      <Button varient="secondary" onClick={addAgent} label="Add Notes" />
       
       </div>
     </div>
