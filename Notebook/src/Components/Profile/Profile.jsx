@@ -22,8 +22,7 @@ function Profile() {
   const [file, setfile] = useState(null);
   const timerRef = useRef(null);
   const inputRef = useRef(null);
-  const [uploaded,setuploaded]=useState(false);
-  
+  const [uploaded, setuploaded] = useState(false);
 
   const navigate = useNavigate();
   const startPress = () => {
@@ -42,24 +41,22 @@ function Profile() {
       setSpinner(false);
       if (file != null && !uploaded) {
         //
-        const Formdata=new FormData();
-        Formdata.append('file',file);
-        Formdata.append('id',Math.random(1,10));
+        const Formdata = new FormData();
+        Formdata.append("file", file);
+        Formdata.append("id", Math.random(1, 10));
         try {
-          const res = axios.post("http://localhost:5184/api/File/upload",
-          
-            Formdata,
-        )  
-        console.log(res);
-        toast.success("uplodaed");
-        setuploaded(true);
-        } catch (error) {
-          toast.error(error);  
-        }
-        
-      }
+          const res = axios.post(
+            "http://localhost:5184/api/File/upload",
 
-      
+            Formdata
+          );
+          console.log(res);
+          toast.success("uplodaed");
+          setuploaded(true);
+        } catch (error) {
+          toast.error(error);
+        }
+      }
     }
 
     //////////////file/ multipart ////////////
@@ -97,10 +94,8 @@ function Profile() {
 
   React.useEffect(() => {
     document.addEventListener("click", handleOutsideClick);
-      return () => document.removeEventListener("click", handleOutsideClick);
-    
-    
-  }, [file,uploaded]);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [file, uploaded]);
 
   return (
     <div className="profile_container">
@@ -134,8 +129,6 @@ function Profile() {
             onChange={handleImageChange}
             style={{ display: "none" }}
           />
-
-          
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Search } from "lucide-react"; // install: npm install lucide-react
 import { toast } from "react-toastify";
 import Button from "../Button/Buttons";
+import "./Searchbar.css";
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [disable, setdisable] = useState(false);
@@ -27,7 +28,7 @@ export default function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center w-full max-w-xl bg-gray-100 hover:bg-gray-200 rounded-full px-4 py-2 shadow-sm transition-colors duration-200"
+      className="flex items-center w-full max-w-xl bg-gray-100 hover:bg-gray-200 rounded-full px-4 py-2 shadow-sm transition-colors duration-200 search-bar"
     >
       <input
         type="text"

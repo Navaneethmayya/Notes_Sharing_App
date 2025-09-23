@@ -8,6 +8,13 @@
     width: 100%;
     height: 100vh;
 }
+.floww-div{
+   
+  width: 800px;
+  height: 600px;
+  border: 1px solid #ccc; /* optional, just to see boundaries */
+}
+
 .flow_inputs{
     padding :10px;
     color:blue;

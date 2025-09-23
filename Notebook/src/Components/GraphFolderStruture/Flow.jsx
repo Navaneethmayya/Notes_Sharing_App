@@ -16,32 +16,31 @@ import { toast } from "react-toastify";
 
 export default function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [deleteBtn,setDeleteBtn] = useState(false);
-  
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]); 
   const [nodeId,setNodeId] =useState("");
   const [nodeLabel,setNodeLabel] =useState("");
   const [cFrom,setCFrom] =useState("");
   const [cTo,setCTo] =useState("");
 
     useEffect(() => {
-    const interval = setInterval(() => {
-      setNodes((nds) =>
-        nds.map((n) => ({
-          ...n,
-          position: {
-            x: n.position.x + (Math.random() - 0.5) * 10, 
-            y: n.position.y + (Math.random() - 0.5) * 10, 
+  const interval = setInterval(() => {
+    setNodes((nds) =>
+      nds.map((n) =>
+        n.selected
+          ? n // if node is selected → don't move it
+          : {
+              ...n,
+              position: {
+                x: n.position.x + (Math.random() - 0.5) * 10,
+                y: n.position.y + (Math.random() - 0.5) * 10,
+              },
+            }
+      )
+    );
+  }, 300);
 
-            //   x: n.position.x +  5, 
-            // y: n.position.y +  5,
-          },
-        }))
-      );
-    }, 300); // update every 300ms
-
-    return () => clearInterval(interval);
-  }, [setNodes]);
+  return () => clearInterval(interval);
+}, [setNodes]);
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
@@ -52,17 +51,24 @@ export default function Flow() {
     setDeleteBtn(true);
   }
   const addAgent = () => {
+      const id = nodeId.trim();
+  const label = nodeLabel.trim();
+  const from = cFrom.trim();
+  const to = cTo.trim();
 
-    if(nodeId !== "")
-    {
-      const newId = nodeId.toLowerCase();
+      if (!id || !label) {
+    toast.warning("Enter a topic name before adding a node");
+    return; // stop execution here
+  }
+    
+      const newId = id.toLowerCase();
 
     const newPosition = {
       x: Math.floor(Math.random() * 200) + 100,
       y: Math.floor(Math.random() * 200) + 100,
     };
 
-   const newData = { label: nodeLabel };
+   const newData = { label: label };
 
     const newNode = {
       id: newId,
@@ -77,19 +83,21 @@ export default function Flow() {
       console.log("all nodes:", updated);
       return updated;
     });
-    const newEdge = { id: `e${cFrom}-${cTo}`, source: cFrom.toLowerCase(), target: cTo.toLowerCase() };
-    setEdges((prev = []) => {
-      const updated = [...prev, newEdge];
-      console.log("new edge:", newEdge);
-      console.log("all edges:", updated);
-      return updated;
-    });
-    }
-    else{
-      toast.warning("enter a topic a name to add node")
-    }
+    if(from && to){
+      const newEdge = { id: `e${cFrom}-${cTo}`, source: from.toLowerCase(), target: to.toLowerCase() }
+
+      setEdges((prev = []) => {
+        const updated = [...prev, newEdge];
+        console.log("new edge:", newEdge);
+        console.log("all edges:", updated);
+        return updated;
+      });
+    };
+    
+    setNodeId("")
     setNodeLabel("");
     setCFrom("");
+    setCTo("");
   };
 
   return (
@@ -113,7 +121,7 @@ export default function Flow() {
       <input type="text" name=""  value={nodeLabel} onChange={((e)=>{setNodeLabel(e.target.value);setNodeId(e.target.value);setCTo(e.target.value)})} id="node_lable" placeholder="Enter a topic name" />
       <label htmlFor="connection_from">Related to</label>
       <input type="text" name=""  value={cFrom} onChange={((e)=>setCFrom(e.target.value))} id="connection_from" placeholder="enter parent topic name"/>
-      <Button varient="secondary" onClick={addAgent} label="Add Notes" />
+      <Button  label="addNodes" type="submit" onClick={addAgent} variant = "primary" disabled={false} />
       
       </div>
     </div>
