@@ -10,6 +10,7 @@ import LoginPage from "./Pages/LoginPage";
 import { Route, Routes } from "react-router-dom";
 import AuthorDasboard from "./Pages/AuthorDasboard";
 import FlowPage from "./Pages/FlowPage";
+import Testing from "./Pages/Testing";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -34,6 +35,7 @@ function App() {
         <Route path="/authordashboard" element={<AuthorDasboard/>}/>
         <Route path="/search" element={<SearchBar/>}/>
         <Route path="/FlowPage" element={<FlowPage/>}/>
+        <Route path="testing" element={<Testing/>}/>
         </Routes>
 
     </>
